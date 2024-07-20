@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-md fixed-top py-2 py-sm-0 {{ if .nav_white -}} navbar-scrolled {{- end -}}"
+     id="mainNav">
+    <div class="container py-0 py-sm-1">
+        <a class="navbar-brand" href="{{ absURL "" }}">
+            <!--suppress CheckImageSize -->
+            <img src="{{ absURL "logo.png" }}" width="50" height="50" alt="logo">
+        </a>
+
+        <a class="d-none d-xl-block navbar-brand lh-sm text-white text-center text-xl-start" href="{{ absURL "" }}">
+            <span style="font-size: 1.3em">{{ site.Title }}</span><br>
+            {{ site.Params.subtitle }}
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- For sm screen and down -->
+        <div class="d-flex d-md-none offcanvas offcanvas-end" id="offcanvasNavbar">
+            <div class="offcanvas-header d-flex flex-column">
+                <button type="button" class="btn-close me-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <a class="navbar-brand offcanvas-navbar-brand lh-sm text-center mt-3 me-0 flex-wrap"
+                   href="{{ absURL "" }}">
+                    <span style="font-size: 1.1rem">{{ site.Title }}</span><br>
+                    {{ site.Params.subtitle }}
+                </a>
+            </div>
+
+            <div class="offcanvas-body pt-0">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {{ range site.Params.pages }}
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase py-1 text-center"
+                               href="{{ absURL (index . 1) }}">
+                                {{ index . 0 }}
+                            </a>
+                        </li>
+                    {{ end }}
+
+                    <li class="ms-2 pt-4">
+                        <button class="btn donate-btn btn-outline-primary text-uppercase px-3 rounded-0"
+                                type="button" style="font-size: 0.9rem;">
+                            Donate
+                        </button>
+                        <a class="btn btn-primary text-white text-uppercase px-3 rounded-0 ms-2" type="button"
+                           style="font-size: 0.9rem;" href="{{ absURL "join-us" }}">
+                            Join Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- For md screen and up -->
+        <ul class="d-none d-md-flex navbar-nav flex-row ms-auto">
+            {{ range site.Params.pages }}
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase text-white text-start" href="{{ absURL (index . 1) }}">
+                        {{ index . 0 }}
+                    </a>
+                </li>
+            {{ end }}
+
+            <li class="ms-2">
+                <button class="btn donate-btn btn-outline-primary text-uppercase px-4 rounded-0"
+                        type="button" style="font-size: 0.9rem;">
+                    Donate
+                </button>
+                <a class="btn btn-primary text-white text-uppercase px-4 rounded-0 ms-2" type="button"
+                   style="font-size: 0.9rem;" href="{{ absURL "join-us" }}">
+                    Join Us
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{{ with resources.Get "nav.css" | postCSS | minify }}
+    <link rel="stylesheet" href="{{ .Permalink }}">
+{{ end }}
+
+<script src="{{ absURL "jquery/jquery.min.js" }}"></script>
+
+<script type="application/javascript">
+    "use strict";
+
+    (function ($) {
+        let listenScrollEvent = function () {
+            let nav = $("#mainNav");
+
+            if (nav.offset().top > 30) {
+                nav.addClass("shadow {{ if not .nav_white -}} navbar-scrolled {{- end -}}");
+            } else {
+                nav.removeClass("shadow {{ if not .nav_white -}} navbar-scrolled {{- end -}}");
+            }
+        };
+        listenScrollEvent();
+        $(window).scroll(listenScrollEvent);
+    })(jQuery);
+</script>

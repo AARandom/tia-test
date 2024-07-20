@@ -1,0 +1,54 @@
+baseURL = 'https://tutors-in-action.org/tia/'
+languageCode = 'en-my'
+title = 'Tutors In Action Malaysia (TIA)'
+disableKinds = ["taxonomy", "term"]
+enableRobotsTXT = true
+
+[params]
+subtitle = 'Persatuan Pelajar Bantu Pelajar Malaysia (PPBPM)'
+description = 'We are a team of Malaysian youths hoping to help SPM students achieve their best.'
+inspiration = 'Exacerbated by class disruptions during the pandemic, we realised that not everyone had the privilege of receiving one-to-one guidance from teachers on topics they may struggle with.'
+aim = 'We aim to assist struggling Malaysian youth who lack academic support primarily through specialised online one-to-one or group tutoring by our own team of bright and accomplished volunteer tutors. Furthermore, we plan to use our platform to expand our reach by means of collaborations, fundraisers and more.'
+tutorSignUpLink = 'https://docs.google.com/forms/d/e/1FAIpQLSf6AkKHe-03225EL0eMiKribR0APFzCh8aykc1IB509oC9LZg/viewform?usp=sharing'
+tuteeSignUpLink = 'https://docs.google.com/forms/d/e/1FAIpQLSfpkixo2t9NKedNYlEChe2UvtnuVN9hTkMM6NcrkPNSIPv5SQ/viewform?usp=sharing'
+pages = [
+    ['Home', ''],
+    ['About', 'about'],
+    ['Projects', 'projects'],
+    ['Resources', 'resources']
+]
+impacts = [
+    [1462, "tutors recruited"],
+    [2254, "tutees impacted"],
+    [4228, "hours of tutoring"]
+]
+socials = [
+    ["svg/facebook.svg", "https://www.facebook.com/tutors.in.action.malaysia"],
+    ["svg/instagram.svg", "https://www.instagram.com/tutors.in.action/"],
+    ["svg/telegram.svg", "https://t.me/TIA_helpbot"],
+    ["svg/youtube.svg", "https://www.youtube.com/@tutorsinactionmalaysia"],
+    ["svg/discord.svg", "https://discord.com/invite/7AE6cGVg2Y"],
+    ["svg/linkedin.svg", "https://www.linkedin.com/company/tutors-in-action-malaysia/"],
+    ["svg/xiaohongshu.svg", "https://www.xiaohongshu.com/user/profile/62f653c1000000001f005342"]
+]
+
+[module]
+[[module.mounts]]
+source = "static"
+target = "static"
+
+[[module.mounts]]
+source = "node_modules/countup.js/dist"
+target = "static/countup"
+
+[[module.mounts]]
+source = "node_modules/bootstrap/dist"
+target = "static/bootstrap"
+
+[[module.mounts]]
+source = "node_modules/jquery/dist"
+target = "static/jquery"
+
+[[module.mounts]]
+source = "node_modules/jquery.easing"
+target = "static/jquery.easing"

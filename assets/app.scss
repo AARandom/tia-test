@@ -1,0 +1,99 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$primary: #097276;
+$secondary: #f1f7d7;
+$background: #c3e1d7;
+
+$border-width: 1.5px;
+$border-color: $secondary;
+$accordion-border-color: $secondary;
+$nav-pills-link-active-bg: $secondary;
+$accordion-button-active-bg: none;
+$accordion-button-focus-border-color: none;
+$accordion-button-focus-box-shadow: none;
+$theme-colors: map-merge($theme-colors, (
+        "primary": $primary,
+        "secondary": $secondary
+));
+$body-tertiary-bg: $body-secondary-bg;
+$body-secondary-bg: $background;
+$navbar-light-hover-color: $primary;
+$body-color: $gray-800;
+$accordion-button-color: $gray-600;
+$accordion-button-active-color: $primary;
+$nav-tabs-link-hover-border-color: transparent;
+
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge($utilities, ("font-size": map-merge(map-get($utilities, "font-size"), (responsive: true))));
+
+body {
+  font-weight: 600 !important;
+}
+
+p, li, td {
+  color: var(--bs-gray-600);
+  font-weight: 400;
+}
+
+table {
+  margin-bottom: 1rem;
+}
+
+tr > *:not(:last-child) {
+  padding-right: 18px;
+}
+
+b, strong {
+  font-weight: bold !important;
+}
+
+hr.divider {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 3rem;
+  border-width: 0.2rem;
+  border-color: var(--bs-secondary);
+  opacity: 0.5;
+}
+
+.page-section {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+a {
+  color: var(--bs-pagination-color) !important;
+}
+
+a:hover {
+  color: var(--bs-gray-500) !important;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.clamp {
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: var(--clamp);
+  line-clamp: var(--clamp);
+  -webkit-box-orient: vertical;
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  p, a {
+    font-size: 1.2rem;
+  }
+}
+
+@import "bootstrap/scss/utilities/api";
+@import "bootstrap/scss/bootstrap";
